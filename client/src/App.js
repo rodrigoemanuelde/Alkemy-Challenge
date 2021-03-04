@@ -1,6 +1,8 @@
-import './App.css';
-import NavBar from './components/NavBar/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './App.css';
+
+//Navbar
+import NavBar from './components/NavBar/Navbar';
 
 //Pages
 import Home from './components/Pages/Home/Home';
@@ -9,20 +11,31 @@ import Incomes from './components/Pages/Incomes/Incomes';
 import Register from './components/Pages/Register/Register';
 import Login from './components/Pages/Login/Login';
 
+//Add
+import AddExpenses from './components/Pages/Add/AddExpenses/AddExpenses';
+import AddIncomes from './components/Pages/Add/AddIncomes/AddIncomes';
+
+//Edit
+import EditExpenses from './components/Pages/Edit/EditExpenses/EditExpenses';
+import EditIncomes from './components/Pages/Edit/EditIncomes/EditIncomes';
+
 function App() {
   return (
     <>
       <Router>
         <NavBar />
-        <div className='pages'>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/expenses' component={Expenses} />
-            <Route exact path='/incomes' component={Incomes} />
-            <Route exact path='/register' component={Register} />
-            <Route exact path='/login' component={Login} />
-          </Switch>
-        </div>
+
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/expenses' component={Expenses} />
+          <Route path='/incomes' component={Incomes} />
+          <Route path='/register' component={Register} />
+          <Route path='/login' component={Login} />
+          <Route path='/addexpenses' component={AddExpenses} />
+          <Route path='/addincomes' component={AddIncomes} />
+          <Route path='/editexpenses/:id' component={EditExpenses} />
+          <Route path='/editincomes/:id' component={EditIncomes} />
+        </Switch>
       </Router>
     </>
   );
